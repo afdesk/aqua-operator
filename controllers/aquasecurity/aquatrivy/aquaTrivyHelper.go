@@ -746,7 +746,9 @@ func (enf *AquaTrivyHelper) CreateTrivyDeployment(cr *aquasecurityv1alpha1.AquaT
 	}
 
 	if enf.Parameters.Trivy.Spec.Envs != nil {
-		deployment.Spec.Template.Spec.Containers[0].Env = append(deployment.Spec.Template.Spec.Containers[0].Env, enf.Parameters.Trivy.Spec.Envs...)
+		for _, env := range enf.Parameters.Trivy.Spec.Envs {
+			deployment.Spec.Template.Spec.Containers[0].Env = extra.AppendEnvVar(deployment.Spec.Template.Spec.Containers[0].Env, env)
+		}
 	}
 
 	return deployment
