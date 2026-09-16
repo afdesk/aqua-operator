@@ -1211,7 +1211,7 @@ func (ebf *AquaKubeEnforcerHelper) newTrivy(cr *operatorv1alpha1.AquaKubeEnforce
 			CisKubernetesBenchmarkEnabled: cr.Spec.DeployTrivy.CisKubernetesBenchmarkEnabled,
 			VulnerabilityScannerEnabled:   cr.Spec.DeployTrivy.VulnerabilityScannerEnabled,
 			BatchDeleteLimit:              cr.Spec.DeployTrivy.BatchDeleteLimit,
-			BatchDeleteDelay:              cr.Spec.DeployTrivy.BatchDeleteLimit,
+			BatchDeleteDelay:              cr.Spec.DeployTrivy.BatchDeleteDelay,
 		},
 	}
 	return aquatrivy
