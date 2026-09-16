@@ -100,7 +100,7 @@ func (enf *AquaKubeEnforcerHelper) CreateKubeEnforcerClusterRole(name string, na
 				"configmaps",
 			},
 			Verbs: []string{
-				"get", "list", "watch",
+				"get", "list", "watch", "update", "create",
 			},
 		},
 		{
@@ -457,17 +457,6 @@ func (enf *AquaKubeEnforcerHelper) CreateKubeEnforcerRole(cr, namespace, name, a
 			},
 			Verbs: []string{
 				"create", "delete",
-			},
-		},
-		{
-			APIGroups: []string{
-				"*",
-			},
-			Resources: []string{
-				"configmaps",
-			},
-			Verbs: []string{
-				"create", "update",
 			},
 		},
 	}
