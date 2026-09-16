@@ -257,7 +257,10 @@ func (r *AquaKubeEnforcerReconciler) Reconcile(ctx context.Context, req ctrl.Req
 	}
 
 	if instance.Spec.DeployTrivy != nil {
-		r.installAquaTrivy(instance)
+		_, err = r.installAquaTrivy(instance)
+		if err != nil {
+			return reconcile.Result{}, err
+		}
 	} else if instance.Spec.DeployStarboard != nil {
 		r.installAquaStarboard(instance)
 	} else {
@@ -283,7 +286,10 @@ func (r *AquaKubeEnforcerReconciler) Reconcile(ctx context.Context, req ctrl.Req
 			TrivyService: defaultService,
 			ImageData:    defaultService.ImageData,
 		}
-		r.installAquaTrivy(instance)
+		_, err = r.installAquaTrivy(instance)
+		if err != nil {
+			return reconcile.Result{}, err
+		}
 	}
 
 	return ctrl.Result{}, nil
