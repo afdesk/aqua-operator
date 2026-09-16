@@ -6,6 +6,7 @@ import (
 	"github.com/aquasecurity/aqua-operator/pkg/utils/extra"
 	"github.com/aquasecurity/aqua-operator/pkg/utils/k8s/rbac"
 	"os"
+	"strconv"
 
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -775,7 +776,7 @@ func (ebf *AquaTrivyHelper) getTrivyEnvVars(cr *aquasecurityv1alpha1.AquaTrivy) 
 		},
 		{
 			Name:  "OPERATOR_LOG_DEV_MODE",
-			Value: "false",
+			Value: strconv.FormatBool(cr.Spec.LogDevMode),
 		},
 		{
 			Name:  "OPERATOR_SCAN_JOB_TIMEOUT",
@@ -783,23 +784,23 @@ func (ebf *AquaTrivyHelper) getTrivyEnvVars(cr *aquasecurityv1alpha1.AquaTrivy) 
 		},
 		{
 			Name:  "OPERATOR_CONCURRENT_SCAN_JOBS_LIMIT",
-			Value: "10",
+			Value: stringOrDefault(cr.Spec.ConcurrentScanJobsLimit, "10"),
 		},
 		{
 			Name:  "OPERATOR_SCAN_JOB_RETRY_AFTER",
-			Value: "30s",
+			Value: stringOrDefault(cr.Spec.ScanJobRetryAfter, "30s"),
 		},
 		{
 			Name:  "OPERATOR_BATCH_DELETE_LIMIT",
-			Value: "10",
+			Value: stringOrDefault(cr.Spec.BatchDeleteLimit, "10"),
 		},
 		{
 			Name:  "OPERATOR_BATCH_DELETE_DELAY",
-			Value: "10s",
+			Value: stringOrDefault(cr.Spec.BatchDeleteDelay, "10s"),
 		},
 		{
 			Name:  "OPERATOR_METRICS_BIND_ADDRESS",
-			Value: ":8080",
+			Value: stringOrDefault(cr.Spec.MetricsBindAddress, ":8080"),
 		},
 		{
 			Name:  "OPERATOR_METRICS_FINDINGS_ENABLED",
@@ -811,11 +812,11 @@ func (ebf *AquaTrivyHelper) getTrivyEnvVars(cr *aquasecurityv1alpha1.AquaTrivy) 
 		},
 		{
 			Name:  "OPERATOR_HEALTH_PROBE_BIND_ADDRESS",
-			Value: ":9090",
+			Value: stringOrDefault(cr.Spec.HealthProbeBindAddress, ":9090"),
 		},
 		{
 			Name:  "OPERATOR_VULNERABILITY_SCANNER_ENABLED",
-			Value: "false",
+			Value: stringOrDefault(cr.Spec.VulnerabilityScannerEnabled, "false"),
 		},
 		{
 			Name:  "OPERATOR_VULNERABILITY_SCANNER_SCAN_ONLY_CURRENT_REVISIONS",
@@ -835,7 +836,7 @@ func (ebf *AquaTrivyHelper) getTrivyEnvVars(cr *aquasecurityv1alpha1.AquaTrivy) 
 		},
 		{
 			Name:  "OPERATOR_CLUSTER_COMPLIANCE_ENABLED",
-			Value: "false",
+			Value: stringOrDefault(cr.Spec.OperatorClusterComplianceEnabled, "false"),
 		},
 		{
 			Name:  "OPERATOR_RBAC_ASSESSMENT_SCANNER_ENABLED",
@@ -891,4 +892,11 @@ func (ebf *AquaTrivyHelper) getTrivyEnvVars(cr *aquasecurityv1alpha1.AquaTrivy) 
 		},
 	}
 	return result
+}
+
+func stringOrDefault(value, def string) string {
+	if value == "" {
+		return def
+	}
+	return value
 }
