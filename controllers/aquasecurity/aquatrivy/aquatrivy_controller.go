@@ -178,7 +178,7 @@ func (r *AquaTrivyReconciler) addTrivyDeployment(cr *aquasecurityv1alpha1.AquaTr
 	reqLogger := log.WithValues("Trivy deployment phase", "Create Deployment")
 	reqLogger.Info("Start creating deployment")
 	reqLogger.Info("Aqua Trivy", "cr.Spec.Infrastructure.Version", cr.Spec.Infrastructure.Version)
-	pullPolicy, registry, repository, tag := extra.GetImageData("trivy-operator", cr.Spec.Infrastructure.Version, cr.Spec.TrivyService.ImageData, true)
+	pullPolicy, registry, repository, tag := extra.GetImageData("trivy-operator", cr.Spec.Infrastructure.Version, cr.Spec.TrivyService.ImageData, cr.Spec.AllowAnyVersion)
 
 	trivyHelper := newAquaTrivyHelper(cr)
 	deployment := trivyHelper.CreateTrivyDeployment(cr,
