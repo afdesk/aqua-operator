@@ -176,7 +176,7 @@ func (enf *AquaTrivyHelper) CreateTrivyServiceAccount(cr, namespace, app, name s
 		"app.kubernetes.io/instance":   "trivy-operator",
 		"app.kubernetes.io/managed-by": "aqua-operator",
 		"app.kubernetes.io/name":       "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 	}
 	annotations := map[string]string{
 		"description": "Service account for aqua trivy",
@@ -266,7 +266,7 @@ func (enf *AquaTrivyHelper) CreateTrivyOperatorConfigMap(namespace string) *core
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &corev1.ConfigMap{
@@ -293,7 +293,7 @@ func (enf *AquaTrivyHelper) CreateTrivyOperatorSettingsConfigMap(namespace strin
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &corev1.ConfigMap{
@@ -356,7 +356,7 @@ func (enf *AquaTrivyHelper) CreateTrivyPoliciesConfigMap(namespace string) *core
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &corev1.ConfigMap{
@@ -377,7 +377,7 @@ func (enf *AquaTrivyHelper) CreateTrivyConfigConfigMap(namespace string) *corev1
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &corev1.ConfigMap{
@@ -415,7 +415,7 @@ func (enf *AquaTrivyHelper) CreateTrivySecret(namespace, name string) *corev1.Se
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &corev1.Secret{
@@ -448,7 +448,7 @@ func (enf *AquaTrivyHelper) CreateTrivyService(namespace string) *corev1.Service
 			Labels: map[string]string{
 				"app.kubernetes.io/name":       "trivy-operator",
 				"app.kubernetes.io/instance":   "trivy-operator",
-				"app.kubernetes.io/version":    "0.29.0-ubi9",
+				"app.kubernetes.io/version":    "0.34.0-ubi9",
 				"app.kubernetes.io/managed-by": "trivy-operator",
 			},
 		},
@@ -473,7 +473,7 @@ func (enf *AquaTrivyHelper) CreateTrivyRole(namespace string) *rbacv1.Role {
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &rbacv1.Role{
@@ -505,7 +505,7 @@ func (enf *AquaTrivyHelper) CreateTrivyRoleBinding(namespace string) *rbacv1.Rol
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &rbacv1.RoleBinding{
@@ -537,7 +537,7 @@ func (enf *AquaTrivyHelper) CreateTrivyLeaderElectionRole(namespace string) *rba
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &rbacv1.Role{
@@ -569,7 +569,7 @@ func (enf *AquaTrivyHelper) CreateTrivyLeaderElectionRoleBinding(namespace strin
 	labels := map[string]string{
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "trivy-operator",
 	}
 	return &rbacv1.RoleBinding{
@@ -608,7 +608,7 @@ func (enf *AquaTrivyHelper) CreateTrivyDeployment(cr *aquasecurityv1alpha1.AquaT
 		"aquasecoperator_cr":           cr.Name,
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "aqua-operator",
 	}
 	annotations := map[string]string{
@@ -626,7 +626,7 @@ func (enf *AquaTrivyHelper) CreateTrivyDeployment(cr *aquasecurityv1alpha1.AquaT
 		"app":                          "trivy-operator",
 		"app.kubernetes.io/name":       "trivy-operator",
 		"app.kubernetes.io/instance":   "trivy-operator",
-		"app.kubernetes.io/version":    "0.29.0-ubi9",
+		"app.kubernetes.io/version":    "0.34.0-ubi9",
 		"app.kubernetes.io/managed-by": "aqua-operator",
 	}
 

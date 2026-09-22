@@ -94,7 +94,7 @@ const (
 	StarboardVersion = "0.15.10"
 
 	// TrivyVersion Latest trivy-operator version default
-	TrivyVersion = "0.29.0-ubi9"
+	TrivyVersion = "0.34.0-ubi9"
 
 	// CyberCenterAddress Aqua Cybercenter Address
 	CyberCenterAddress = "https://cybercenter5.aquasec.com"

@@ -6,13 +6,13 @@ metadata:
 spec:
   infra:
     serviceAccount: trivy-operator
-    version: "0.28.0"
+    version: "0.34.0"
   config:
     imagePullSecret: trivy-registry
   image:
     registry: docker.io/aquasec
     repository: trivy-operator
-    tag: "0.28.0"
+    tag: "0.34.0"
     pullPolicy: IfNotPresent
   deploy:
     replicas: 1
